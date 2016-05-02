@@ -179,7 +179,7 @@ static NSUInteger const kMAX_FRAME = 2048;
             i--;
             if ( i >= 0 ) {
                 PixelUnit *leftUnit = _pixelArray[i+(int)pixelUnit.point.y*kMAX_FRAME];
-                if ( leftUnit.color == pixelUnit.color ) {
+                if ( leftUnit.color == pixelUnit.color && (leftUnit.isDoneUpDown == NO || leftUnit.isDoneLeftRight == NO )) {
                     [self addUnit:leftUnit];
                 }
                 else{
@@ -196,7 +196,7 @@ static NSUInteger const kMAX_FRAME = 2048;
             i++;
             if ( i < kMAX_FRAME ) {
                 PixelUnit *rightUnit = _pixelArray[i+(int)pixelUnit.point.y*kMAX_FRAME];
-                if ( rightUnit.color == pixelUnit.color ) {
+                if ( rightUnit.color == pixelUnit.color && (rightUnit.isDoneUpDown == NO || rightUnit.isDoneLeftRight == NO ) ) {
                     [self addUnit:rightUnit];
                 }
                 else{
@@ -216,7 +216,7 @@ static NSUInteger const kMAX_FRAME = 2048;
             j--;
             if ( j >= 0 ) {
                 PixelUnit *upUnit = _pixelArray[(int)pixelUnit.point.x + j*kMAX_FRAME];
-                if ( upUnit.color == pixelUnit.color ) {
+                if ( upUnit.color == pixelUnit.color && (upUnit.isDoneUpDown == NO || upUnit.isDoneLeftRight == NO )) {
                     [self addUnit:upUnit];
                 }
                 else{
@@ -233,7 +233,7 @@ static NSUInteger const kMAX_FRAME = 2048;
             j++;
             if ( j < kMAX_FRAME ) {
                 PixelUnit *downUnit = _pixelArray[(int)pixelUnit.point.x + j*kMAX_FRAME];
-                if ( downUnit.color == pixelUnit.color ) {
+                if ( downUnit.color == pixelUnit.color && (downUnit.isDoneUpDown == NO || downUnit.isDoneLeftRight == NO )) {
                     [self addUnit:downUnit];
                 }
                 else{
